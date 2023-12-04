@@ -141,7 +141,7 @@ elif menu == "Validades":
 
 elif menu == "Estoque":
     st.title("Estoque")
-    st.subheader("Adicione a quantidade de saída dos últimos três meses e descubra seu estoque padrão ideal.")
+    st.subheader("Adicione a quantidade de saídas dos últimos três meses e descubra seu estoque padrão ideal")
     with st.container():
         antepe = st.number_input("Antepenúltimo mês", value=1)
         penul = st.number_input("Penúltimo mês", value=1)
