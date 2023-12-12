@@ -475,7 +475,7 @@ else:
 # *PESQUISAR FALTAS
     with st.container():
         tasy_falta_pesquisar = st.number_input("Insira o Tasy do medicamento", value=1)
-        farmacia_falta_pesquisar = st.selectbox("Farmácia você quer pesquisar", options=['Emergência','Central', 'Endovascular', 'Centro Obstétrico', 'Bloco Cirúrgico'])
+        farmacia_falta_pesquisar = st.selectbox("Farmácia você quer pesquisar", options=['Emergência','Central', 'CAF', 'Endovascular', 'Centro Obstétrico', 'Bloco Cirúrgico'])
         intervalo = st.number_input("Intervalo de dias", value=30)
 
 
