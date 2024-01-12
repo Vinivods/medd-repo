@@ -41,7 +41,7 @@ elif menu == "Resumo":
 
         if login_btn:
             try:
-                conn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=medddatabase.c5slvt4ub1v5.us-east-2.rds.amazonaws.com;Database=medD;UID=meddadmin;PWD=vinivods045031;")
+                conn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=medddatabase.c5slvt4ub1v5.us-east-2.rds.amazonaws.com;Database=medD;UID=meddadmin;PWD=senha;")
                 cursor = conn.cursor()
 
                 try:
@@ -108,7 +108,7 @@ elif menu == "Resumo":
                     st.error("Por favor, preencha todas as informações")
                 else:
                     try:
-                        conn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=medddatabase.c5slvt4ub1v5.us-east-2.rds.amazonaws.com;Database=medD;UID=meddadmin;PWD=vinivods045031;")
+                        conn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=medddatabase.c5slvt4ub1v5.us-east-2.rds.amazonaws.com;Database=medD;UID=meddadmin;PWD=senha;")
                         cursor = conn.cursor()
 
                         try:
@@ -159,7 +159,7 @@ elif menu == "Validades":
                 server = 'medddatabase.c5slvt4ub1v5.us-east-2.rds.amazonaws.com'
                 database = 'medD'
                 username = 'meddadmin'
-                password = 'vinivods045031'
+                password = 'senha'
                 driver = '{ODBC Driver 17 for SQL Server}'  # Ou o driver que você está usando
 
                 # Crie a string de conexão
@@ -215,11 +215,11 @@ elif menu == "Validades":
 
         if botao_pesquisar:
             user = 'meddadmin'
-            password = 'vinivods045031'
+            password = 'senha'
             host = 'medddatabase.c5slvt4ub1v5.us-east-2.rds.amazonaws.com'
             database = 'medD'
 
-            conn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=medddatabase.c5slvt4ub1v5.us-east-2.rds.amazonaws.com;Database=medD;UID=meddadmin;PWD=vinivods045031;")
+            conn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=medddatabase.c5slvt4ub1v5.us-east-2.rds.amazonaws.com;Database=medD;UID=meddadmin;PWD=senha;")
             
             cursor = conn.cursor()
 
@@ -259,12 +259,10 @@ elif menu == "Validades":
                     pdf_canvas.setFont("Helvetica", 12)
                     pdf_canvas.drawCentredString(300, 730, f"Medicamentos que vão vencer em até {intervalo_validades_pesquisar} dias")
 
-                    # Reorganizando as colunas no DataFrame
                     df = df[['Medicamento', 'Tasy', 'Data_vencimento', 'Lote', 'Quantidade']]
 
                     medicamento_width = max(pdf_canvas.stringWidth(str(cell), "Helvetica", 10) for cell in df['Medicamento'])
 
-                    # Adicionando a tabela
                     data = [df.columns.values.astype(str).tolist()] + df.values.tolist()
                     pdf_canvas.setFont("Helvetica", 10)
 
@@ -284,10 +282,10 @@ elif menu == "Validades":
                             x += cell_width
                         
                         # Adicionando divider centralizado com cor personalizada
-                        divider_color = (0, 0, 0)  # Cor azul para o divider (R, G, B)
-                        divider_width_percentage = 80  # Largura percentual do divider
+                        divider_color = (0, 0, 0)  
+                        divider_width_percentage = 80  
 
-                        pdf_canvas.setLineWidth(1)  # Largura da linha do divider em pontos
+                        pdf_canvas.setLineWidth(1) 
                         pdf_canvas.setStrokeColorRGB(*divider_color)
                         
                         divider_width = pdf_canvas._pagesize[0] * (divider_width_percentage / 100)
@@ -296,9 +294,7 @@ elif menu == "Validades":
                         divider_y = y - 4  # Posição vertical da linha de divisão
 
                         pdf_canvas.line(divider_x_start, divider_y, divider_x_end, divider_y)
-                        # pdf_canvas.line(0, y - 5, x + sum(col_widths), y - 5)
                     
-                    # Salvando o PDF
                     pdf_canvas.save()
                     buffer.seek(0)
                     return buffer.read()
@@ -326,7 +322,6 @@ elif menu == "Validades":
 # *EXCLUIR VALIDADES
     with st.container():
         st.title("Excluir validade adicionada")
-        # st.subheader("Exclua uma validade")
 
         email_excluir = st.text_input("Informe seu email")
 
@@ -334,7 +329,7 @@ elif menu == "Validades":
         botao_excluir = st.button("Excluir", type="primary")
 
         if botao_excluir:
-            conn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=medddatabase.c5slvt4ub1v5.us-east-2.rds.amazonaws.com;Database=medD;UID=meddadmin;PWD=vinivods045031;")
+            conn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=medddatabase.c5slvt4ub1v5.us-east-2.rds.amazonaws.com;Database=medD;UID=meddadmin;PWD=senha;")
             
             cursor = conn.cursor()
 
@@ -431,23 +426,19 @@ else:
             if tasy_falta == '' or medicamento_falta == '' or quantidade_falta == '' or data_falta == '' or farmacia_falta == '' or quantidade_falta == 0:
                 st.error("Por favor, preencha todas as informações")
             else:
-                # Estabeleça a conexão
                 try:
-                    # Substitua com suas próprias credenciais e informações do banco de dados
                     server = 'medddatabase.c5slvt4ub1v5.us-east-2.rds.amazonaws.com'
                     database = 'medD'
                     username = 'meddadmin'
-                    password = 'vinivods045031'
+                    password = 'senha'
                     driver = '{ODBC Driver 17 for SQL Server}'  # Ou o driver que você está usando
 
-                    # Crie a string de conexão
                     connection_string = f'DRIVER={driver};SERVER={server};DATABASE={database};UID={username};PWD={password}'
 
-                    # Conecte ao banco de dados
                     conn = pyodbc.connect(connection_string)
                     cursor = conn.cursor()
 
-                    # # Execute a consulta
+                    # Execute a consulta
                     try:
                         cursor.execute("INSERT INTO ControleFaltas (Tasy, Medicamento, Quantidade, Farmacia, Data_falta) VALUES (?, ?, ?, ?, ?)", tasy_falta, medicamento_falta, quantidade_falta, farmacia_falta, data_falta)
 
@@ -481,7 +472,7 @@ else:
 
         pesquisar_falta = st.button("Pesquisar", type="primary")
         if pesquisar_falta:
-            conn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=medddatabase.c5slvt4ub1v5.us-east-2.rds.amazonaws.com;Database=medD;UID=meddadmin;PWD=vinivods045031;")
+            conn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=medddatabase.c5slvt4ub1v5.us-east-2.rds.amazonaws.com;Database=medD;UID=meddadmin;PWD=senha;")
             cursor = conn.cursor()
 
             cursor.execute(f"SELECT Medicamento, SUM(Quantidade) AS Quantidade, COUNT(Medicamento) AS FaltasMed FROM ControleFaltas WHERE Tasy = ? AND Farmacia = ? AND Data_falta >= DATEADD(DAY, -{intervalo}, GETDATE()) GROUP BY Medicamento", tasy_falta_pesquisar, farmacia_falta_pesquisar)
