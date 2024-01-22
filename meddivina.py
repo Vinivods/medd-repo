@@ -1,17 +1,16 @@
 import streamlit as st
-import pyodbc
 import time
 import math
 import pandas as pd
 import datetime
 import pandas as pd
+import smtplib
+import pyodbc
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from io import BytesIO
 from medLista import mapa_medicamentos, nome_medicamentos
-import smtplib
 from email.message import EmailMessage
-
 
 #info email recuperar senha
 smtp_server = "smtp.gmail.com"
