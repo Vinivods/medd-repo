@@ -3,7 +3,6 @@ import pyodbc
 import time
 import math
 import pandas as pd
-import pyodbc    
 import datetime
 import pandas as pd
 from reportlab.lib.pagesizes import letter
